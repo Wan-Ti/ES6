@@ -124,3 +124,54 @@ add([1, 2]); // 3
 
 1. 交换变量的值
 2. 从函数返回多个值
+   函数只能返回一个值，如果要返回多个值，只能将它们放在数组或对象中返回。通过解构赋值，取出这些值；
+   ```
+   // 返回一个数组
+
+    function example() {
+      return [1, 2, 3];
+    }
+    let [a, b, c] = example();
+
+    // 返回一个对象
+
+    function example() {
+      return {
+        foo: 1,
+        bar: 2
+      };
+    }
+    let { foo, bar } = example();
+   ```
+3. 函数参数的定义：将一组参数与变量名对应起来
+**4. 提取JSON数据：**
+```
+let jsonData = {
+  id:42,
+  status:"ok",
+  data:[867,5307]
+ };
+ let { id,status,data:number } = jsonData;
+ console.log(id,status.number);
+ //42,"ok",[867,5307]
+```
+5. 函数参数的默认值
+**6.遍历Map结构**
+```
+const map = new Map();
+map.set('first','Hello');
+map.set('second','world');
+
+for (let [key,value] of map) {
+  console.log(key + "is" + value);
+}
+
+//first if hello 
+//second if world
+```
+7. 输入模块的指定方法
+
+加载模块时，需要指定输入哪些方法。
+```
+const { SourceMapCousumer,SourceNode } = require("source-map")
+```
