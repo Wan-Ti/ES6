@@ -144,6 +144,7 @@ add([1, 2]); // 3
     let { foo, bar } = example();
    ```
 3. 函数参数的定义：将一组参数与变量名对应起来
+
 **4. 提取JSON数据：**
 ```
 let jsonData = {
@@ -156,6 +157,7 @@ let jsonData = {
  //42,"ok",[867,5307]
 ```
 5. 函数参数的默认值
+
 **6.遍历Map结构**
 ```
 const map = new Map();
