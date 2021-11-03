@@ -199,23 +199,152 @@ Math.imul() //两个参数带符号整数形式相乘；</br>
 
 ## 函数的扩展
 
+1. ES6允许函数的默认值直接设置参数；</br>
+2. 参数默认值的位置一般书函数的尾参数；</br>
+3. 函数的length属性返回值为没有指定默认值的参数个数；</br>
 
+#### 参数默认值的应用
 
+ES6引入reset参数，形式为```...变量名 ``` ，用于获取函数的多余参数。reset参数搭配的变量是一个数组。该变量将多余的参数放入数组中。
 
+```
+funciton add (...values){
+  let sum = 0;
+  for(let val of values){
+  sum += val;
+  }
+  return sum
+}
 
+add(2,3,5) // 10
+```
+**reset参数之后不能再有其他参数**
 
+#### name属性
+函数的name属性返回该函数的函数名
 
+#### 箭头函数
 
+使用``` => ```定义函数
 
+```
+let f = () => 2; //如果代码块的语句大于1，用大括号括起来，并使用return语句返回
 
+等价于
 
+let f = function () {
+  return 2
+}
+```
 
+箭头函数没有自己的this，箭头函数内部的this永远指向最外层的this；</br>
+因为没有自己的this所以无法使用.call,.bind,.apply改变this的指向；</br>
 
+## 数组的扩展
 
+### 扩展运算符
 
+``` ... ```类似于rest参数的逆运算，将一个数组转为用逗号分隔的参数序列。主要用于函数调用，并且可以与正常的函数参数结合使用。
 
+```
+function add (x,y){
+  return x + y;
+}
 
+const number = [4,30] 
 
+add (...number)  //34
+;
+```
+**应用**
+
+#### 复制数组
+
+```
+const a1 = [2,3];
+
+const a2 = [...a1];
+```
+
+#### 合并数组
+
+const a1 = [1,2];
+const a2 = [3,4];
+const a3 = [5,6];
+
+const a4 = [...a1,...a2,...a3]
+
+console.log(a4) //[1,2,3,4,5,6]
+
+#### Map和Set结构
+
+```
+let map = new Map([
+  [1,'one'],
+  [2,'two'],
+  [3,'three']
+]);
+let add = [...map.key()];//[1,2,3]
+```
+
+### Array.from()
+
+可以将两类对象转为真正的数组：类似数组的对象和可遍历的对象。
+
+类似于数组的对象指的是：
+```
+let obj = {
+  id:'1';
+  name:'test'
+};
+let arr2 = Array.from(obj); //['1','test]
+```
+
+### Array.of()
+
+用于将一组值转化为数组的形式；
+```
+Array.of(3,11,4);//[3,11,4]
+```
+
+### 数组实例的find()和findIndex()
+
+find：用于找出第一个符合条件的数组成员。参数是一个回调函数。比如：
+```
+let a1 = [1,3,5,2,-4,-5]
+
+a1.find((n) => n > 0) //1
+
+a1.find((n) => n < 0) //-4 注意是第一个
+
+```
+
+### entires(),keys(),values()
+
+遍历方式可用```for...of```进行遍历;</br>
+唯一的区别是：keys()是对键名的遍历、values()是对键值的遍历、entries()是对键值对的遍历。
+
+### Array.prototype.includes
+
+返回一个布尔值，表示某个数组是否包含给定的值；
+
+## 对象的扩展
+
+### obj.assign()
+
+用于对象的合并，将源对象的所有属性复制到目标对象；</br>
+第一个参数是目标对象，其余参数为源对象；
+
+```
+const target = {a:1};
+
+const obj1 = {b:2};
+const obj2 = {c:3};
+
+Object.assign(target,obj1,obj2)
+
+console.log(target) // {a:1,b:2,c:3}
+```
 
 
 
