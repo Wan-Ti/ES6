@@ -360,133 +360,97 @@ Set.prototype.values()：返回键值的遍历器</br>
 Set.prototype.entries()：返回键值对的遍历器</br>
 Set.prototype.forEach()：使用回调函数遍历每个成员</br>
 
-## 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+## Proxy
+
+ES6原生提供了Proxy构造函数,用于生成Proxy实例;
+
+```
+var proxy = new Proxy(target,handler)
+```
+### get方法
+
+get方法用于拦截某个属性的读取操作，接受三个参数，依次为目标对象、属性名、proxy实例本身，最后一个参数可选;</br>
+```
+const person = {
+  name:'大王'
+}
+
+const proxy = new Proxy(person,{
+  get (target,key){
+    if (key in target){
+      return target[key];
+    }else {
+      throw new ReferenceError("属性名 \"" + key + "\" 不存在")
+    }
+  }
+});
+
+console.log(proxy.name )// 大王
+```
+
+### set方法
+
+该方法用于拦截某个属性的赋值操作，可以接受四个参数，依次为目标对象、属性名、属性值和proxy，最后一个可省略；
+
+需求：通过Proxy保证person对象的age属性是一个不大于200的整数；
+
+```
+let validator = {
+  set: function(obj,prop,value) {
+    if(prop === 'age') {
+      if(!Number.isInteger(value)){
+        throw new TypeError('这不是一个整型数字')；
+      }
+      if（value > 200）{
+        thorw mew RangeError('The age seems invalid');
+      }
+    };  
+    
+    //对于满足条件的age属性及其他赋值，直接保存
+    obj[prop] = value;
+    return true;
+  }
+};
+
+let person = new Proxy({},validator);
+
+person.age = 100;
+
+person.age //100
+
+person.age = 'test' //报错
+
+person.age = 300 //报错
+```
+上述代码表示因为设置了存值函数set，任何不符合要求的age属性赋值，都会抛出一个错误异常。利用set可以进行数据绑定，也就是当对象发生变化时，会自动更新DOM；
+
+**有事我们会在对象上面设置内部属性，属性名的第一个字符使用下划线开头，表示这些属性不应该被外部使用。结合Get和Set方法，就可以防止这些内部属性被外部读写**
+
+```
+const target = {};
+
+const proxy = new Proxy(target,{
+  get (target,key ) {
+    check(key,'get');
+    return target[key];
+  },
+  set (target,key,value) {
+    check(key, 'set');
+    target[key]= value;
+    return true
+  }
+})
+
+function check(key,action){
+  if(key[0] === '_'){
+    throw new Error(`你不可以${action}"${key}"`)
+  }
+}
+
+proxy._name = 'se' // 你不可以set"_name"
+```
+
+## Promise方法
+
+ES6规定：Promise对象是一个构造函数，用来生成Promise实例；
 
