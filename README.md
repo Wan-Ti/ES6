@@ -1,4 +1,167 @@
 # ES6
+
+## 基础练习
+
+
+1、
+
+```
+let arr = [1,2,3]   ===>   "123";
+
+arr.join();
+```
+
+2、
+
+```
+let arr = ['a','b','c'];
+let temp = ['d','e','f'];  ===>  ['a','b','c','d','e','f']
+```
+
+3、
+
+```
+按时间排序
+let timeArr = [
+	{date: '2021-11-15 10:40:37'},
+	{date: '2020-04-15 10:11:12'},
+	{date: '2021-13-15 11:32:32'},
+	{date: '2021-08-15 12:40:36'},
+	{date: '2021-11-16 10:43:32'},
+]
+按水果总数之和排序
+let arr = [
+	{apple: 12, banana: 20, peach: 3},
+	{apple: 22, banana: 27, peach: 13},
+	{apple: 12, banana: 20, peach: 21},
+	{apple: 52, banana: 10, peach: 23},
+	{apple: 12, banana: 32, peach: 13},
+]
+```
+
+4、
+
+```
+var arr = [1,3,5,7,9,11];  
+var arrCopy = arr.slice(1);
+var arrCopy2 = arr.slice(1,4);
+var arrCopy3 = arr.slice(1,-2);
+var arrCopy4 = arr.slice(-4,-1);
+
+console.log(arrCopy);
+console.log(arrCopy2);
+console.log(arrCopy3);
+console.log(arrCopy4);
+
+ ===>   [1,7,9,11]
+ ===>   [1,3,5,'a','b,'c',7,9,11]
+ ===>   [1,2,4,6,7,9,11]
+```
+
+5、
+
+```
+var arr = [1,3,5,7,7,5,3,1];
+
+console.log(arr.indexOf(5)); 　　　　　　
+console.log(arr.lastIndexOf(5)); 　　　 
+console.log(arr.indexOf(5,3)); 　　　　 
+console.log(arr.lastIndexOf(5,4)); 
+console.log(arr.indexOf("5")); 
+```
+
+6、
+
+```
+let arr = [1,2,3,4,5];
+let forEachArr = arr.forEach((item) => {
+	if(item === 3) break;
+	console.log(item);
+	return item * item;
+});
+let mapArr = arr.map(item => {
+ return item * item;
+});
+
+console.log(forEachArr);
+console.log(mapArr)
+```
+
+7、reduce高级技巧
+
+```
+计算数组中每个元素出现的次数
+let names = ['Alice', 'Bob', 'Tiff', 'Bruce', 'Alice'];
+
+数组去重
+let arr = [1,2,3,4,4,1]
+
+将二维数组转化为一维数组
+let arr = [[0, 1], [2, 3], [4, 5]]
+
+将多维数组转化成一维数组
+let arr = [[0, 1], [2, 3], [4,[5,6,7]]]
+```
+
+
+
+
+
+```
+join()、push()、pop()、shift()、unshift()、sort()、reverse()、concat()、slice()、splice()、indexOf()、lastIndexOf()、forEach()、map()、filter()、every()、some()、reduce()
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## let const var 的区别：
 特点：let与const均存在不可重复声明变量与暂时性死区的特点；</br>
 let 与 var：var命令会存在“变量提升”现象，即变量可以在声明之前使用，值为undefined;</br>
