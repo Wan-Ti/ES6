@@ -51,6 +51,11 @@ let timeArr = [
 	{date: '2021-08-15 12:40:36'},
 	{date: '2021-11-16 10:43:32'},
 ]
+timeArr.sort((a,b)=>{
+    return b.date > a.date ? 1 : -1
+})
+console.log(timeArr)
+
 按水果总数之和排序
 let arr = [
 	{apple: 12, banana: 20, peach: 3},
@@ -60,12 +65,13 @@ let arr = [
 	{apple: 12, banana: 32, peach: 13},
 ]
 ```
+![image](https://user-images.githubusercontent.com/47940363/144390739-08384518-1933-4b9d-9c5e-39b67b076614.png)
 
 4、
 
 ```
 var arr = [1,3,5,7,9,11];  
-var arrCopy = arr.slice(1);
+var arrCopy = arr.slice(1); //
 var arrCopy2 = arr.slice(1,4);
 var arrCopy3 = arr.slice(1,-2);
 var arrCopy4 = arr.slice(-4,-1);
@@ -74,10 +80,6 @@ console.log(arrCopy);
 console.log(arrCopy2);
 console.log(arrCopy3);
 console.log(arrCopy4);
-
- ===>   [1,7,9,11]
- ===>   [1,3,5,'a','b,'c',7,9,11]
- ===>   [1,2,4,6,7,9,11]
 ```
 
 5、
