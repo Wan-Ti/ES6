@@ -4,26 +4,43 @@
 
 
 1、字符串与数组之间的互换：
-```
-let arr = [1,2,3]   ===>   "123";
-
-
-```
 
 1):数组转字符串
 ```
-arr.join(''); 
+let arr = [1,2,3]   ===>   "123";
+arr.join(''); //数组中的所有元素放入一个字符串, 元素是通过指定的分隔符进行分隔的
+arr.join();
+arr.join('-');
+
+arr.toString(); // 把一个逻辑值转换为字符串，并返回结果. 不可以指定分隔符，但是我们可以通过replace()方法指定替换
 ```
+![image](https://user-images.githubusercontent.com/47940363/144378195-f9c2234a-62af-432f-b323-b5c6b42f8ce1.png)
 
+2):字符串转数组
+```
+let arr = 'aa,bb,cc'
+let newStr = arr.split();//  把一个字符串分割成字符串数组
+let newStr = arr.split('');
+let newStr = arr.split('-');
 
-2、
+let newStr = [..arr]; // ES6扩展运算符
+```
+![image](https://user-images.githubusercontent.com/47940363/144379785-10eed22a-8fd6-4581-85be-3f9a2f2f5a8a.png)
+
+2、数组合并
 
 ```
 let arr = ['a','b','c'];
 let temp = ['d','e','f'];  ===>  ['a','b','c','d','e','f']
-```
 
-3、
+arr = [...arr,...brr] // 扩展运算符
+let c = arr.contact(temp); // 连接两个数组或者更多的数组；
+arr.push.apply(arr,temp); //调用a.push这个函数实例的apply方法，同时把，b当作参数传入
+```
+![image](https://user-images.githubusercontent.com/47940363/144382330-0ca37854-25ee-47da-9c28-fb823d2766b6.png)
+
+
+3、数组排序
 
 ```
 按时间排序
