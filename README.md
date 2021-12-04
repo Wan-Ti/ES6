@@ -137,22 +137,35 @@ join()、push()、pop()、shift()、unshift()、sort()、reverse()、concat()、
 
 
 
+### 原型链继承缺点：
+1.不能向父类传参；</br>
+2.值传递和引用传递，引用传递传递的是地址
+
+### 构造函数继承缺点
+1.原型上的方法和属性不能继承
+
+### 组合继承缺点
+1.父类构造函数多次调用
+
+### 寄生组合式继承
+
+var a = [1,2,3,4]
+Object.getPrototypeOf(a)获取a的原型类型
+instanceOf的实现地址
+
+
+Function.prototype == Function.__proto__
+所有构造函数的原型对象都指向Function
 
 
 
 
 
+this绑定规则：
+ 1：函数独立调用
 
 
-
-
-
-
-
-
-
-
-
+new的优先级高于bind,new后面要跟个函数
 
 
 
